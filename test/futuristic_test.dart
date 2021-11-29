@@ -39,7 +39,7 @@ void main() {
         home: Futuristic(
           futureBuilder: () => goodFuture(),
           initialBuilder: (_, start) {
-            WidgetsBinding.instance.addPostFrameCallback((_) => start());
+            WidgetsBinding.instance!.addPostFrameCallback((_) => start());
             return Container();
           },
           busyBuilder: (_) => Text(text),
@@ -55,7 +55,7 @@ void main() {
         home: Futuristic(
           futureBuilder: () => goodFuture(),
           initialBuilder: (_, start) {
-            WidgetsBinding.instance.addPostFrameCallback((_) => start());
+            WidgetsBinding.instance!.addPostFrameCallback((_) => start());
             return Container();
           },
         ),
@@ -71,7 +71,7 @@ void main() {
         home: Futuristic(
           futureBuilder: () => goodFuture(),
           initialBuilder: (_, start) {
-            WidgetsBinding.instance.addPostFrameCallback((_) => start());
+            WidgetsBinding.instance!.addPostFrameCallback((_) => start());
             return Container();
           },
           busyBuilder: (_) => CircularProgressIndicator(),
@@ -90,7 +90,7 @@ void main() {
         home: Futuristic(
           futureBuilder: () => goodFuture(),
           initialBuilder: (_, start) {
-            WidgetsBinding.instance.addPostFrameCallback((_) => start());
+            WidgetsBinding.instance!.addPostFrameCallback((_) => start());
             return Text(text);
           },
           busyBuilder: (_) => CircularProgressIndicator(),
@@ -108,7 +108,7 @@ void main() {
         home: Futuristic(
           futureBuilder: () => badFuture(text),
           initialBuilder: (_, start) {
-            WidgetsBinding.instance.addPostFrameCallback((_) => start());
+            WidgetsBinding.instance!.addPostFrameCallback((_) => start());
             return Container();
           },
           busyBuilder: (_) => CircularProgressIndicator(),
@@ -127,7 +127,7 @@ void main() {
         home: Futuristic(
           futureBuilder: () => badFuture(text),
           initialBuilder: (_, start) {
-            WidgetsBinding.instance.addPostFrameCallback((_) => start());
+            WidgetsBinding.instance!.addPostFrameCallback((_) => start());
             return Text(text);
           },
           busyBuilder: (_) => CircularProgressIndicator(),
@@ -146,12 +146,12 @@ void main() {
         home: Futuristic(
           futureBuilder: () => badFuture(error),
           initialBuilder: (_, start) {
-            WidgetsBinding.instance.addPostFrameCallback((_) => start());
+            WidgetsBinding.instance!.addPostFrameCallback((_) => start());
             return Text(initial);
           },
           busyBuilder: (_) => CircularProgressIndicator(),
           errorBuilder: (_, e, retry) {
-            WidgetsBinding.instance.addPostFrameCallback((_) => retry());
+            WidgetsBinding.instance!.addPostFrameCallback((_) => retry());
             return Text(e.toString());
           },
         ),
@@ -172,7 +172,7 @@ void main() {
         home: Futuristic(
           futureBuilder: () => goodFuture(expected),
           initialBuilder: (_, start) {
-            WidgetsBinding.instance.addPostFrameCallback((_) => start());
+            WidgetsBinding.instance!.addPostFrameCallback((_) => start());
             return Container();
           },
           onData: expectAsync1((data) => expect(data, expected)),
@@ -187,7 +187,7 @@ void main() {
         home: Futuristic(
           futureBuilder: () => badFuture(expected),
           initialBuilder: (_, start) {
-            WidgetsBinding.instance.addPostFrameCallback((_) => start());
+            WidgetsBinding.instance!.addPostFrameCallback((_) => start());
             return Container();
           },
           onError: expectAsync2((error, _) => expect(error, expected)),
@@ -198,7 +198,7 @@ void main() {
   });
 }
 
-Future goodFuture([Object data]) async {
+Future goodFuture([Object? data]) async {
   return Future.value(data);
 }
 
