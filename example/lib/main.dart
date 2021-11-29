@@ -64,7 +64,8 @@ class GoodButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Futuristic<int>(
       futureBuilder: () => goodFuture(1, 2),
-      initialBuilder: (_, start) => RaisedButton(child: Text('Good button example'), onPressed: start),
+      initialBuilder: (_, start) =>
+          RaisedButton(child: Text('Good button example'), onPressed: start),
       busyBuilder: (_) => CircularProgressIndicator(),
       dataBuilder: (_, data) => Text(data.toString()),
     );
@@ -76,9 +77,11 @@ class BadButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Futuristic<int>(
       futureBuilder: () => badFuture(1, 2),
-      initialBuilder: (_, start) => RaisedButton(child: Text('Bad button example'), onPressed: start),
+      initialBuilder: (_, start) =>
+          RaisedButton(child: Text('Bad button example'), onPressed: start),
       busyBuilder: (_) => CircularProgressIndicator(),
-      errorBuilder: (_, error, retry) => RaisedButton(child: Text('Sorry! Try again'), onPressed: retry),
+      errorBuilder: (_, error, retry) =>
+          RaisedButton(child: Text('Sorry! Try again'), onPressed: retry),
     );
   }
 }
@@ -115,7 +118,7 @@ class BadScreen extends StatelessWidget {
           onError: (error, retry) {
             showDialog(
               context: context,
-              child: AlertDialog(
+              builder: (context) => AlertDialog(
                 content: Text('Sorry! Try again'),
                 actions: <Widget>[
                   FlatButton(
